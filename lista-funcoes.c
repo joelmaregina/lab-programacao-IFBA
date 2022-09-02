@@ -192,5 +192,73 @@ char ler3Letras(char letras[])
     scanf("%c", &letras[2]);
 }
 
+//07. Crie um programa que tenha uma função ler3Palavras. Essa função deve ler três palavras do usuário e retornar as três palavras.
+// A função main deve imprimir essas três palavras.
+
+char ler3Palavras(char palavra1[], char palavra2[], char palavra3[]){
+    printf("Digite a 1º palavra: ");
+    fgets(palavra1, 21, stdin);
+    getchar();
+    printf("Digite a 2º palavra: ");
+    fgets(palavra2, 21, stdin);
+    getchar();
+    printf("Digite a 3º palavra: ");
+    fgets(palavra3, 21, stdin);
+    getchar();
+
+  
+}
+
+void main (){
+    char palavra1[21];
+    char palavra2[21];
+    char palavra3[21];
+    
+    ler3Palavras(palavra1, palavra2, palavra3);
+
+    printf("Primeira palavra: " );
+    puts(palavra1);
+    printf("Segunda palavra: " );
+    puts(palavra2);
+    printf("Terceira palavra: " );
+    puts(palavra3);
+}
+
+/* 08. Crie um programa que tenha uma função cadastrarCliente. Essa função deve ler os dados do cliente (nome, dataNascimento, cpf, sexo) e 
+retornar os dados do cliente. A função main deve imprimir os dados do cliente. */
+
+char cadastrarCliente (char nome[], char dataNascimento[], char cpf[], char sexo[]){
+  printf("============ CADASTRO CLIENTES ============ \n");
+  printf("Digite o seu nome: \n");
+  fgets(nome, 31, stdin);
+  printf("Digite sua data de nascimento: \n");
+  fgets(dataNascimento, 11, stdin);
+  getchar();
+  printf("Digite seu CPF: \n");
+  fgets(cpf, 16, stdin);
+  printf("Digite seu sexo: \n");
+  fgets(sexo, 3, stdin);
+  
+}
+
+void main (){
+    char nome[31];
+    char dataNascimento[11];
+    char cpf[16];
+    char sexo[3];
+    
+    cadastrarCliente(nome, dataNascimento, cpf, sexo);
+    
+    printf("============ CLIENTE CADASTRADO! ============ \n");
+    printf("NOME: ");
+    puts(nome);
+    printf("DATA DE NASCIMENTO: ");
+    puts(dataNascimento);
+    printf("CPF: ");
+    puts(cpf);
+    printf("SEXO: ");
+    puts(sexo);
+}
+
 
 
