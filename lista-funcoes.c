@@ -260,5 +260,81 @@ void main (){
     puts(sexo);
 }
 
+#include <stdio.h>
+// Evolua o programa que tem a função cadastrarCliente, para fazer as validações dos dados.
+// Cada validação deve ser feita em uma função diferente, conforme lista abaixo.
+// A função cadastrarCliente deve chamar cada uma dessas funções.
+// A função main deve imprimir se o cadastro foi realizado com sucesso ou se houve erro, informando onde foi o erro:
+//     • função validarNome: recebe o nome digitado, e valida se nome tem até 20 caracteres;
+//     • função validarSexo: recebe o sexo digitado, e valida é um sexo válido (opções: m e M para masculino; f e F para feminino, o e O para outro).
+//     • função validarCPF: recebe o cpf digitado, e valida é um cpf válido;
+//     • função validarNacimento: recebe o data digitada, e valida é uma data válida.
+#define VALIDO 1
+#define INVALIDO 0
 
+char cadastrarCliente (char nome[], char dataNascimento[], char cpf[], char sexo[]){
+  printf("============ CADASTRO CLIENTES ============ \n");
+  printf("Digite o seu nome: \n");
+  fgets(nome, 31, stdin);
+  validarNome(nome);
+  
+  printf("Digite sua data de nascimento: \n");
+  fgets(dataNascimento, 11, stdin);
+  getchar();
+  validarNascimento(dataNascimento);
+  
+  printf("Digite seu CPF: \n");
+  fgets(cpf, 16, stdin);
+  validarCPF(cpf);
+  
+  printf("Digite seu sexo: \n");
+  fgets(sexo, 3, stdin);
+  validarSexo(sexo);
+  
+}
+
+int validarNome(nome)
+{
+    int valor = INVALIDO;
+    
+    return valor;
+}
+
+
+int validarNascimento()
+{
+    int valor = INVALIDO;
+    
+    return valor;
+}
+
+int validarCPF()
+{
+    int valor = INVALIDO;
+    
+    return valor;
+}
+
+int validarSexo(dataNascimento)
+{
+    int valor = INVALIDO;
+    
+    return valor;
+}
+
+void main()
+{
+    int valorNome = validarNome(valorNome);
+    imt valorIdade =  validarNascimento(valorIdade);
+    int valorCPF = validarCPF(valorCPF);
+    int valorSexo = validarSexo(valorSexo);
+    
+    if (valorNome == VALIDO && valorIdade == VALIDO && valorCPF == VALIDO && valorSexo == VALIDO ){
+        printf("========= CLIENTE CADASTRADO! ========= \n");
+    };
+    if (valorNome == INVALIDO) printf("Cliente não cadastrado: Nome inválido! \n");
+    if (valorIdade == INVALIDO) printf("Cliente não cadastrado: Idade inválida! \n");
+    if (valorCPF == INVALIDO) printf("Cliente não cadastrado: CPF inválido! \n");
+    if (valorSexo == INVALIDO) printf("Cliente não cadastrado: Sexo inválido! \n");
+}
 
