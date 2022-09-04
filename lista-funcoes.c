@@ -298,16 +298,20 @@ int main(){
 
     Cliente clienteAtual = cadastrarCliente();
     
+    printf("======================================= \n");
+    
     if (validarNome(clienteAtual.nome) == VALIDO && validarNascimento(clienteAtual.nascimento.dia, clienteAtual.nascimento.mes, clienteAtual.nascimento.ano) == VALIDO && validarCPF(clienteAtual.cpf) == VALIDO && validarSexo(clienteAtual.sexo) == VALIDO ){
         printf("========= CLIENTE CADASTRADO! ========= \n");
+        printf("========= Confira seus dados: ========= \n");
+        printf("Nome: %s\nData de Nascimento: %d/%d/%d;\nCPF: %s;\nSEXO: %c.", clienteAtual.nome, clienteAtual.nascimento.dia, clienteAtual.nascimento.mes, clienteAtual.nascimento.ano, clienteAtual.cpf, clienteAtual.sexo);
+        printf("\n======================================= \n");
     } else {
         if (validarNome(clienteAtual.nome) == INVALIDO) printf("Cliente não cadastrado: Nome inválido! \n");
-        if (validarNascimento(clienteAtual.nascimento.dia, clienteAtual.nascimento.mes, clienteAtual.nascimento.ano) == INVALIDO) printf("Cliente não cadastrado: Idade inválida! \n");
+        if (validarNascimento(clienteAtual.nascimento.dia, clienteAtual.nascimento.mes, clienteAtual.nascimento.ano) == INVALIDO) printf("Cliente não cadastrado: Data de nascimento inválida! \n");
         if (validarCPF(clienteAtual.cpf)  == INVALIDO) printf("Cliente não cadastrado: CPF inválido! \n");
         if (validarSexo(clienteAtual.sexo) == INVALIDO) printf("Cliente não cadastrado: Sexo inválido! \n");
     }
-
-    return 0;
+    
 }
 
 Cliente cadastrarCliente()
@@ -346,7 +350,20 @@ int validarNome(char nome[])
 
 int validarNascimento(int dia, int mes, int ano)
 {
-    int valor = INVALIDO;
+    int valor = VALIDO;
+    
+    // Valida os meses de 30 dias:
+    if((mes == 4 || mes == 6 || mes == 9 || mes == 11) && dia > 30) valor = INVALIDO;
+    
+    // Confere se o ano é bisexto:
+    if ((ano % 4 == 0)  && ((ano % 100 != 0) || (ano % 400 == 0))){
+        if (mes == 2 && dia > 29) valor = INVALIDO;
+    } else {
+        if(mes == 2 && dia > 28) valor = INVALIDO;
+    }
+    
+    // Valida se as datas digitadas existem:
+    if(dia > 31 || dia < 1 || mes > 12 || mes  < 1 || ano > 2022 || ano < 1870) valor = INVALIDO;
     
     return valor;
 }
@@ -428,6 +445,5 @@ int validarSexo(char sexo)
     if (sexo == 'F' || sexo == 'f' || sexo == 'M' || sexo == 'm' || sexo == 'O' || sexo == 'o') valor = VALIDO;
     
     return valor;
-}
 }
 
