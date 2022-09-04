@@ -355,7 +355,7 @@ int validarNascimento(int dia, int mes, int ano)
     // Valida os meses de 30 dias:
     if((mes == 4 || mes == 6 || mes == 9 || mes == 11) && dia > 30) valor = INVALIDO;
     
-    // Confere se o ano é bisexto:
+    // Confere se o ano é bisexto e os dias do mês de Fevereiro a depender se o ano é bisexto ou não:
     if ((ano % 4 == 0)  && ((ano % 100 != 0) || (ano % 400 == 0))){
         if (mes == 2 && dia > 29) valor = INVALIDO;
     } else {
